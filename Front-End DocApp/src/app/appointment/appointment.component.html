@@ -1,0 +1,62 @@
+<app-usernav></app-usernav>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Create Appointment</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h2>Create Appointment</h2>
+
+                <!-- Appointment Form -->
+                <form [formGroup]="appointmentForm" (ngSubmit)="createAppointment()">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="email" id="email" formControlName="email" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="docId" class="form-label">Doctor ID:</label>
+                        <input type="text" id="docId" formControlName="docId" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="docName" class="form-label">Doctor Name:</label>
+                        <select id="docName" formControlName="docName" class="form-select">
+                            <option value="" disabled>Select Doctor Name</option>
+                            <option *ngFor="let name of doctorNames" [value]="name">{{ name }}</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="docSpecial" class="form-label">Doctor Specialization:</label>
+                        <select id="docSpecial" formControlName="docSpecial" class="form-select">
+                            <option value="" disabled>Select Doctor Specialization</option>
+                            <option *ngFor="let specialization of doctorSpecs" [value]="specialization">{{ specialization }}</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="docSpecial" class="form-label">Doctor Specialization:</label>
+                        <input type="text" id="docSpecial" formControlName="docSpecial" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="status" class="form-label">Status:</label>
+                        <input type="text" id="status" formControlName="status" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="date" class="form-label">Date:</label>
+                        <input type="datetime-local" id="date" formControlName="date" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create Appointment</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
